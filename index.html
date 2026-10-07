@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="How many words AI models generate per day since ChatGPT, compared with all human word output. Updated weekly from public disclosures.">
+<title>AI Words</title>
+<link rel="canonical" href="https://aiwords.si/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; a headline counter, then two charts, each followed by its own notes and sources. */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#152131; --muted:#5B6779; --rule:#D9DFE8;
+  --machine:#2457E6; --machine-soft:rgba(36,87,230,.12);
+  --human:#B8741F; --human-soft:rgba(184,116,31,.14);
+  --s2:#0F8F7A; --s3:#8B4FD6; --s4:#D2436B;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E141C; --surface:#151D28; --ink:#E6ECF4; --muted:#93A0B3; --rule:#263243;
+  --machine:#6F95FF; --machine-soft:rgba(111,149,255,.16);
+  --human:#E3A657; --human-soft:rgba(227,166,87,.16);
+  --s2:#3CC7AE; --s3:#B48BF2; --s4:#F07894; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E141C; --surface:#151D28; --ink:#E6ECF4; --muted:#93A0B3; --rule:#263243;
+  --machine:#6F95FF; --machine-soft:rgba(111,149,255,.16);
+  --human:#E3A657; --human-soft:rgba(227,166,87,.16);
+  --s2:#3CC7AE; --s3:#B48BF2; --s4:#F07894; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;padding-block:40px 64px;display:grid;gap:48px}
+h1,h2{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.05;font-weight:700}
+h2{font-size:1.55rem;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:16px}
+.lede{font-size:1.1rem;color:var(--muted)}
+.m{color:var(--machine)} .h{color:var(--human)}
+
+.meter{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:22px;display:grid;gap:14px}
+.meter-row{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:baseline}
+.big{font-family:var(--f-display);font-size:clamp(2.2rem,7vw,3.6rem);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.unit{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.bar{height:14px;border-radius:7px;background:var(--human-soft);overflow:hidden;position:relative}
+.bar>span{position:absolute;inset:0 auto 0 0;background:var(--machine);border-radius:7px}
+.bar-legend{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.75rem;color:var(--muted);gap:8px;flex-wrap:wrap}
+.small{font-size:.85rem;color:var(--muted)}
+
+section{display:grid;gap:16px}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--f-mono);font-size:.78rem;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--machine);outline-offset:2px}
+.chart{position:relative;height:440px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 10px 6px}
+@media (max-width:560px){.chart{height:360px}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem}
+.legend label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.sw{width:14px;height:3px;border-radius:2px;display:inline-block}
+.sw.dash{background:repeating-linear-gradient(90deg,var(--human) 0 4px,transparent 4px 7px)!important}
+
+#checked{font-family:var(--f-mono);font-size:.78rem}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.notes div{min-width:0;display:grid;gap:6px;align-content:start}
+.notes h3{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin:0;color:var(--muted);font-weight:500}
+.notes p{font-size:.92rem}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:620px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+a{color:var(--machine)}
+.sources{font-size:.85rem;color:var(--muted);display:grid;gap:4px;padding-left:18px;margin:0}
+footer{border-top:1px solid var(--rule);padding-top:20px}
+
+html,body{margin:0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Text output, 2022 – 2026</div>
+    <h1>How many words do <span class="m">machines</span> write now, next to <span class="h">people</span>?</h1>
+    <p class="small" id="checked">Data last checked: 7 Oct 2026 · updated weekly</p>
+    <p class="lede">ChatGPT launched on 30 Nov 2022. Since then, AI labs have started publishing how much text their models process. This page puts those disclosures on one timeline, converted to words per day, against the commonly cited estimate of all human word output.</p>
+  </header>
+
+  <div class="meter" aria-label="Latest machine word volume compared with human output">
+    <div class="eyebrow" id="kpiLabel">Largest single disclosure · Google</div>
+    <div class="meter-row">
+      <div><div class="big m" id="kpiAI">~77T</div><div class="unit">words / day processed by Google AI</div></div>
+      <div><div class="big h">~100T</div><div class="unit">words / day spoken + written by all humans (est.)</div></div>
+    </div>
+    <div class="bar" role="img" id="kpiBar" aria-label="Google AI volume compared with human daily word output"><span id="kpiFill" style="width:77%"></span></div>
+    <div class="bar-legend"><span>0</span><span id="kpiPct">Google alone ≈ 77% of humanity's daily words</span><span>100T</span></div>
+    <p class="small">Upper-bound reading. Google counts tokens processed (prompts, context and outputs, including images and audio), not only text written out. Converted at ~0.75 words per token.</p>
+  </div>
+
+  <section aria-labelledby="c1">
+    <div class="eyebrow">Chart 1 · volume</div>
+    <h2 id="c1">AI words per day, by disclosed source</h2>
+    <p class="small">Each line is a company's own figure, converted to words/day. Lines aren't additive: they overlap, and they measure slightly different things. The jump is 4 to 5 orders of magnitude in about three years.</p>
+    <div class="controls" role="group" aria-label="Y axis scale">
+      <button class="chip" id="btnLog" aria-pressed="true">Log scale</button>
+      <button class="chip" id="btnLin" aria-pressed="false">Linear scale</button>
+    </div>
+    <div class="legend" id="legend1"></div>
+    <div class="chart"><canvas id="volume" aria-label="Line chart of AI words generated per day, 2022 to 2026"></canvas></div>
+    <div class="notes">
+      <div><h3>Read it on log scale</h3><p>Each gridline is 10× the one below. On linear scale, everything before 2025 flattens to zero, which is itself the story.</p></div>
+      <div><h3>Why growth looks so steep</h3><p>Reasoning models and agents burn far more tokens per request than 2023 chatbots. Part of the rise is more work per question, not only more users.</p></div>
+      <div><h3>What's missing</h3><p>Anthropic, Meta, Microsoft, xAI and self-hosted open models publish few or no comparable numbers, so true global volume is higher than any single line.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="c2">
+    <div class="eyebrow">Chart 2 · the open web</div>
+    <h2 id="c2">Share of new web articles that are mostly AI-written</h2>
+    <p class="small">Graphite sampled English-language articles from Common Crawl and ran them through AI detectors. AI-written articles rose fast after ChatGPT, crossed 50% around November 2024, then flattened.</p>
+    <div class="chart"><canvas id="share" aria-label="Area chart of AI versus human share of new web articles"></canvas></div>
+    <div class="notes">
+      <div><h3>The plateau</h3><p>Graphite links the flattening to AI articles performing poorly in search. In its companion study, about 86% of top Google results were human-written.</p></div>
+      <div><h3>Detector limits</h3><p>Detectors have false positives and miss human-edited AI drafts. Treat the line as a trend, accurate to a few points.</p></div>
+      <div><h3>Volume vs. share</h3><p>Chart 1 counts words generated in chats and apps. Most never reach the public web, which is why one can grow 1000× while the other holds at half.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t1">
+    <div class="eyebrow">Data</div>
+    <h2 id="t1">Every data point used</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Date</th><th>Source</th><th>As disclosed</th><th>Words / day</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="small">Conversion: monthly ÷ 30.4, weekly ÷ 7, then × 0.75 words per token. Figures already stated in words are used as-is. Raw data: <a href="data.json">data.json</a>.</p>
+  </section>
+
+  <footer>
+    <div class="eyebrow" style="margin-bottom:8px">Sources</div>
+    <ul class="sources">
+      <li><a href="https://www.shacknews.com/article/149205/google-3-2-quadrillion-monthly-ai-tokens">Shacknews: Google I/O 2026, 9.7T → 480T → 3.2Q tokens/month</a></li>
+      <li><a href="https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/">Implicator: Google 480T (May), 980T (Jul), 1.3Q (Oct 2025)</a></li>
+      <li><a href="https://www.tomtunguz.com/trillion-token-race/">Tomasz Tunguz: The Token Race</a></li>
+      <li><a href="https://www.aol.com/news/chatgpt-creators-openai-generating-100-170754660.html">The Independent: Sam Altman, 100B words/day vs 100T human</a></li>
+      <li><a href="https://www.longtermwiki.com/sourcing/fact/f_DJyrjvvvIg">Longterm Wiki: OpenAI API 6B tokens/min (Oct 2025)</a></li>
+      <li><a href="https://rywalker.com/research/openrouter">Ry Walker: OpenRouter 5T → 25T tokens/week</a></li>
+      <li><a href="https://digg.com/tech/2bc6wpy0">OpenRouter engineer chart: 4.6T → 113T tokens/week (Sep 2025 – Aug 2026)</a></li>
+      <li><a href="https://www.letsdatascience.com/news/ai-token-usage-surges-driving-inference-demand-fdf0352a">LetsDataScience: OpenRouter 6.4T → 13T tokens/week (Jan–Feb 2026)</a></li>
+      <li><a href="https://gptzero.me/news/ai-written-web/">GPTZero × Graphite: AI share of web articles</a></li>
+      <li><a href="https://axios.com/2026/05/15/human-vs-ai-written-articles">Axios: AI articles hover near 50% (May 2026)</a></li>
+      <li><a href="https://www.eweek.com/news/ai-writes-half-internet/">eWeek: 50.3% AI in Nov 2024</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
