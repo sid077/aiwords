@@ -1,4 +1,5 @@
 {
+  "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Credit: AI Words, aiwords.si",
   "lastChecked": "2026-10-07",
   "wordsPerToken": 0.75,
   "humanWordsPerDay": 100000000000000,
@@ -8,11 +9,36 @@
       "label": "Google (all AI surfaces)",
       "color": "--machine",
       "points": [
-        {"date": "2024-05-15", "value": 9.7e12, "unit": "tokens/month", "source": "https://www.shacknews.com/article/149205/google-3-2-quadrillion-monthly-ai-tokens"},
-        {"date": "2025-05-15", "value": 480e12, "unit": "tokens/month", "source": "https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/"},
-        {"date": "2025-07-15", "value": 980e12, "unit": "tokens/month", "source": "https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/"},
-        {"date": "2025-10-15", "value": 1300e12, "unit": "tokens/month", "source": "https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/"},
-        {"date": "2026-05-15", "value": 3200e12, "unit": "tokens/month", "source": "https://www.shacknews.com/article/149205/google-3-2-quadrillion-monthly-ai-tokens"}
+        {
+          "date": "2024-05-15",
+          "value": 9700000000000.0,
+          "unit": "tokens/month",
+          "source": "https://www.shacknews.com/article/149205/google-3-2-quadrillion-monthly-ai-tokens"
+        },
+        {
+          "date": "2025-05-15",
+          "value": 480000000000000.0,
+          "unit": "tokens/month",
+          "source": "https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/"
+        },
+        {
+          "date": "2025-07-15",
+          "value": 980000000000000.0,
+          "unit": "tokens/month",
+          "source": "https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/"
+        },
+        {
+          "date": "2025-10-15",
+          "value": 1300000000000000.0,
+          "unit": "tokens/month",
+          "source": "https://www.implicator.ai/googles-quadrillion-tokens-brag-hides-a-slower-story/"
+        },
+        {
+          "date": "2026-05-15",
+          "value": 3200000000000000.0,
+          "unit": "tokens/month",
+          "source": "https://www.shacknews.com/article/149205/google-3-2-quadrillion-monthly-ai-tokens"
+        }
       ]
     },
     {
@@ -20,8 +46,20 @@
       "label": "OpenAI",
       "color": "--s2",
       "points": [
-        {"date": "2024-02-09", "value": 100e9, "unit": "words/day", "note": "all products", "source": "https://www.aol.com/news/chatgpt-creators-openai-generating-100-170754660.html"},
-        {"date": "2025-10-06", "value": 6e9, "unit": "tokens/minute", "note": "API only", "source": "https://www.longtermwiki.com/sourcing/fact/f_DJyrjvvvIg"}
+        {
+          "date": "2024-02-09",
+          "value": 100000000000.0,
+          "unit": "words/day",
+          "note": "all products",
+          "source": "https://www.aol.com/news/chatgpt-creators-openai-generating-100-170754660.html"
+        },
+        {
+          "date": "2025-10-06",
+          "value": 6000000000.0,
+          "unit": "tokens/minute",
+          "note": "API only",
+          "source": "https://www.longtermwiki.com/sourcing/fact/f_DJyrjvvvIg"
+        }
       ]
     },
     {
@@ -29,30 +67,90 @@
       "label": "OpenRouter (API router)",
       "color": "--s3",
       "points": [
-        {"date": "2024-12-15", "value": 0.4e12, "unit": "tokens/week", "source": "https://www.octagonai.co/markets/science-and-technology/tokens/openrouter-ai-token-usage-aug-24-30/"},
-        {"date": "2025-09-15", "value": 4.6e12, "unit": "tokens/week", "source": "https://digg.com/tech/2bc6wpy0"},
-        {"date": "2026-01-05", "value": 6.4e12, "unit": "tokens/week", "source": "https://www.letsdatascience.com/news/ai-token-usage-surges-driving-inference-demand-fdf0352a"},
-        {"date": "2026-02-09", "value": 13e12, "unit": "tokens/week", "source": "https://www.letsdatascience.com/news/ai-token-usage-surges-driving-inference-demand-fdf0352a"},
-        {"date": "2026-05-26", "value": 25e12, "unit": "tokens/week", "source": "https://rywalker.com/research/openrouter"},
-        {"date": "2026-08-25", "value": 113e12, "unit": "tokens/week", "source": "https://digg.com/tech/2bc6wpy0"}
+        {
+          "date": "2024-12-15",
+          "value": 400000000000.0,
+          "unit": "tokens/week",
+          "source": "https://www.octagonai.co/markets/science-and-technology/tokens/openrouter-ai-token-usage-aug-24-30/"
+        },
+        {
+          "date": "2025-09-15",
+          "value": 4600000000000.0,
+          "unit": "tokens/week",
+          "source": "https://digg.com/tech/2bc6wpy0"
+        },
+        {
+          "date": "2026-01-05",
+          "value": 6400000000000.0,
+          "unit": "tokens/week",
+          "source": "https://www.letsdatascience.com/news/ai-token-usage-surges-driving-inference-demand-fdf0352a"
+        },
+        {
+          "date": "2026-02-09",
+          "value": 13000000000000.0,
+          "unit": "tokens/week",
+          "source": "https://www.letsdatascience.com/news/ai-token-usage-surges-driving-inference-demand-fdf0352a"
+        },
+        {
+          "date": "2026-05-26",
+          "value": 25000000000000.0,
+          "unit": "tokens/week",
+          "source": "https://rywalker.com/research/openrouter"
+        },
+        {
+          "date": "2026-08-25",
+          "value": 113000000000000.0,
+          "unit": "tokens/week",
+          "source": "https://digg.com/tech/2bc6wpy0"
+        }
       ]
     }
   ],
   "webShare": {
     "source": "Graphite (Common Crawl sample, AI detectors)",
     "points": [
-      {"date": "2022-11-15", "ai": 5},
-      {"date": "2023-11-15", "ai": 36},
-      {"date": "2024-11-15", "ai": 50.3},
-      {"date": "2025-03-15", "ai": 50},
-      {"date": "2025-10-15", "ai": 50},
-      {"date": "2026-05-15", "ai": 50}
+      {
+        "date": "2022-11-15",
+        "ai": 5
+      },
+      {
+        "date": "2023-11-15",
+        "ai": 36
+      },
+      {
+        "date": "2024-11-15",
+        "ai": 50.3
+      },
+      {
+        "date": "2025-03-15",
+        "ai": 50
+      },
+      {
+        "date": "2025-10-15",
+        "ai": 50
+      },
+      {
+        "date": "2026-05-15",
+        "ai": 50
+      }
     ]
   },
   "events": [
-    {"date": "2022-11-30", "label": "ChatGPT"},
-    {"date": "2023-03-14", "label": "GPT-4"},
-    {"date": "2024-09-12", "label": "o1 reasoning"},
-    {"date": "2025-02-01", "label": "Agents era"}
+    {
+      "date": "2022-11-30",
+      "label": "ChatGPT"
+    },
+    {
+      "date": "2023-03-14",
+      "label": "GPT-4"
+    },
+    {
+      "date": "2024-09-12",
+      "label": "o1 reasoning"
+    },
+    {
+      "date": "2025-02-01",
+      "label": "Agents era"
+    }
   ]
 }

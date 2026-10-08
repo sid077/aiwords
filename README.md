@@ -51,3 +51,7 @@ Visitor counts use [GoatCounter](https://www.goatcounter.com) (free, no cookies,
 - `og.png` (1200×630) is the link-preview image
 - JSON-LD: `WebSite`, `Dataset` (for Google Dataset Search) and `FAQPage`
 - `robots.txt` and `sitemap.xml`. Bump `<lastmod>` in `sitemap.xml` whenever `data.json` changes.
+
+## License
+
+The compiled dataset (`data.json`) and site text are licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse freely with credit to AI Words (aiwords.si). Underlying figures belong to the companies and publications that disclosed them.
