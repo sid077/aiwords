@@ -36,3 +36,14 @@ python3 -m http.server 8000
 ```
 
 Then open http://localhost:8000 (opening `index.html` directly won't load `data.json`).
+
+## Analytics
+
+Visitor counts use [GoatCounter](https://www.goatcounter.com) (free, no cookies, no consent banner needed). The script in `index.html` reports to `https://aiwords.goatcounter.com`. Dashboard: https://aiwords.goatcounter.com
+
+## SEO
+
+- `<title>`, meta description, canonical, Open Graph and Twitter card tags in `index.html`
+- `og.png` (1200×630) is the link-preview image
+- JSON-LD: `WebSite`, `Dataset` (for Google Dataset Search) and `FAQPage`
+- `robots.txt` and `sitemap.xml`. Bump `<lastmod>` in `sitemap.xml` whenever `data.json` changes.
