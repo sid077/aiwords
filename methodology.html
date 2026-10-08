@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How We Count · AI Words</title>
+<meta name="description" content="How AI Words turns company token disclosures into words per day, which sources it uses, and the caveats behind every number.">
+<link rel="canonical" href="https://aiwords.si/methodology.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E1A36">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI Words">
+<meta property="og:url" content="https://aiwords.si/methodology.html">
+<meta property="og:title" content="How We Count · AI Words">
+<meta property="og:description" content="How AI Words turns company token disclosures into words per day, which sources it uses, and the caveats behind every number.">
+<meta property="og:image" content="https://aiwords.si/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chart of AI-generated words per day rising toward total human word output, 2022 to 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How We Count · AI Words">
+<meta name="twitter:description" content="How AI Words turns company token disclosures into words per day, which sources it uses, and the caveats behind every number.">
+<meta name="twitter:image" content="https://aiwords.si/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">AI Words</a>
+    <nav class="nav" aria-label="Main"><a href="/">Overview</a><a href="/data.html">Data</a><a href="/methodology.html" aria-current="page">Method</a><a href="/about.html">About</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="page-head"><div class="wrap">
+  <h1>How we count</h1>
+  <p>Where the numbers come from, how they are converted, and what they can and can't tell you.</p>
+</div></div>
+<section class="section"><div class="wrap prose">
+  <h2 style="margin-top:0">What gets included</h2>
+  <p>A figure goes on the site only if a company stated it publicly, or a reputable outlet reported the statement, with a date we can pin down. We never estimate or interpolate missing points. Every entry in the data file links to where it came from.</p>
+  <p>The tracked series today are Google (tokens processed across all its AI products), OpenAI (words per day across products in 2024, and API tokens per minute in 2025), and OpenRouter (weekly tokens routed between developers and 400+ models). Other labs are added when they publish comparable numbers.</p>
+
+  <h2>Turning tokens into words</h2>
+  <p>Models read and write in tokens, which are pieces of words. In English, one token averages about three quarters of a word. We convert every token figure at 0.75 words per token, then put it on a common daily scale:</p>
+  <ul>
+    <li>Monthly figures are divided by 30.4.</li>
+    <li>Weekly figures are divided by 7.</li>
+    <li>Per-minute figures are multiplied by 1,440.</li>
+    <li>Figures already stated in words are used as they are.</li>
+  </ul>
+
+  <h2>The human baseline</h2>
+  <p>The comparison line uses roughly 100 trillion words a day for everything all people say and write. Sam Altman cited that estimate in February 2024. It is an order-of-magnitude figure, not a measurement, and should be read that way.</p>
+
+  <h2>Caveats</h2>
+  <h3>Processed is not the same as written</h3>
+  <p>Google's figure counts every token its models handle, including the prompts, documents and context people send in. The text models actually write out is a fraction of that, so the headline counter is an upper bound.</p>
+  <h3>The lines overlap</h3>
+  <p>OpenRouter traffic often ends up at OpenAI or Google models, and companies define their metrics differently. Don't add the lines together.</p>
+  <h3>More tokens per question</h3>
+  <p>Reasoning models and agents can spend many times more tokens on one task than 2023 chatbots did. Some of the growth is heavier work, not just more people using AI.</p>
+  <h3>Detecting AI writing is imperfect</h3>
+  <p>The web-share chart relies on AI detectors, which misfire on some human writing and miss AI text that people edited. Treat it as a trend accurate to a few percentage points.</p>
+
+  <h2>How often it updates</h2>
+  <p>Every Monday the site checks for new disclosures, adds any that meet the rules above, and records the check date at the bottom of each page. Every change is public in the <a href="https://github.com/sid077/aiwords/commits/main/data.json">data file's history</a>.</p>
+  <p>Spotted a missing or wrong figure? <a href="https://github.com/sid077/aiwords/issues/new">Open an issue on GitHub</a> with a link to the source.</p>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">AI Words</a>
+        <p class="foot-about">An independent tracker of how much text AI systems process each day, built from public disclosures and updated every week.</p>
+        <p class="small" style="color:inherit" data-last-checked>Data last checked: 8 Oct 2026</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <a href="/">Overview</a>
+        <a href="/data.html">All data points</a>
+        <a href="/methodology.html">How we count</a>
+        <a href="/#faq">Questions</a>
+      </div>
+      <div>
+        <h3>Data</h3>
+        <a href="/data.json">data.json</a>
+        <a href="https://github.com/sid077/aiwords">Source on GitHub</a>
+        <a href="https://github.com/sid077/aiwords/commits/main/data.json">Change history</a>
+      </div>
+      <div>
+        <h3>Project</h3>
+        <a href="/about.html">About</a>
+        <a href="https://github.com/sid077/aiwords/issues/new">Report a correction</a>
+        <a href="https://www.linkedin.com/in/sid777">Siddhant Dubey on LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Siddhant Dubey. Figures belong to their original publishers.</span>
+      <span>Not affiliated with Google, OpenAI or OpenRouter.</span>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/app.js"></script>
+<script data-goatcounter="https://aiwords.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

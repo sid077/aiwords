@@ -4,10 +4,14 @@ Static site charting how many words AI models generate per day since ChatGPT (No
 
 ## Files
 
-- `index.html` – page layout and styles
-- `app.js` – loads `data.json` and draws the charts (Chart.js from cdnjs)
-- `data.json` – every data point, with its unit and source link. **This is the only file the weekly update edits.**
-- `CNAME` – your custom domain for GitHub Pages
+- `index.html` – overview: live counters, main charts, findings, FAQ
+- `data.html` – every data point in a filterable table, plus web-share readings
+- `methodology.html` – sources, token-to-word conversion, caveats
+- `about.html`, `404.html`
+- `style.css` – shared styles (light and dark)
+- `app.js` – loads `data.json`; drives counters, charts and tables on whichever page it runs
+- `data.json` – every data point, with its unit and source link. **The weekly update edits this file** (plus `sitemap.xml` dates and the FAQ numbers when headline figures change).
+- `CNAME` – custom domain for GitHub Pages
 
 ## Adding a data point
 
