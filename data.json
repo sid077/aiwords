@@ -1,6 +1,6 @@
 {
   "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Credit: AI Words, aiwords.si",
-  "lastChecked": "2026-10-19",
+  "lastChecked": "2026-10-26",
   "wordsPerToken": 0.75,
   "humanWordsPerDay": 100000000000000,
   "volume": [
@@ -59,6 +59,13 @@
           "unit": "tokens/minute",
           "note": "API only",
           "source": "https://www.longtermwiki.com/sourcing/fact/f_DJyrjvvvIg"
+        },
+        {
+          "date": "2026-03-31",
+          "value": 15000000000.0,
+          "unit": "tokens/minute",
+          "note": "API only",
+          "source": "https://openai.com/index/accelerating-the-next-phase-ai/"
         }
       ]
     },
@@ -102,6 +109,12 @@
           "value": 113000000000000.0,
           "unit": "tokens/week",
           "source": "https://digg.com/tech/2bc6wpy0"
+        },
+        {
+          "date": "2026-10-05",
+          "value": 167650000000000.0,
+          "unit": "tokens/week",
+          "source": "https://globaladvisors.biz/2026/10/17/fast-fact-closed-weight-ai-usage-on-openrouter-rose-13-fold-as-its-share-of-tokens-fell/"
         }
       ]
     }
