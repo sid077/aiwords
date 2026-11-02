@@ -1,6 +1,6 @@
 {
   "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Credit: AI Words, aiwords.si",
-  "lastChecked": "2026-10-26",
+  "lastChecked": "2026-11-02",
   "wordsPerToken": 0.75,
   "humanWordsPerDay": 100000000000000,
   "volume": [
@@ -38,6 +38,20 @@
           "value": 3200000000000000.0,
           "unit": "tokens/month",
           "source": "https://www.shacknews.com/article/149205/google-3-2-quadrillion-monthly-ai-tokens"
+        }
+      ]
+    },
+    {
+      "key": "google-api",
+      "label": "Google (first-party model APIs)",
+      "color": "--s4",
+      "points": [
+        {
+          "date": "2026-10-28",
+          "value": 32000000000.0,
+          "unit": "tokens/minute",
+          "note": "first-party model APIs only; \"nearly\"",
+          "source": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/"
         }
       ]
     },
